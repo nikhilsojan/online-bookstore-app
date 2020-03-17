@@ -16,16 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/author"
         android:layout_width="100dp"
         android:layout_height="43dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="68dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/count"
@@ -49,13 +49,24 @@
 
     <TextView
         android:id="@+id/price"
-        android:layout_width="79dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="69dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="67dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="68dp"
         android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toEndOf="@+id/count"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/qty"
+        android:layout_width="53dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="68dp"
+        android:ems="10"
+        android:hint="qty"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/price"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

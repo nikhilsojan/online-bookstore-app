@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,12 +39,13 @@ public class BookList extends ArrayAdapter<Book> {
     @Override
     public View getView(int position,View convertView,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View listviewitem=inflater.inflate(R.layout.list_layout,null,true);
+        final View listviewitem=inflater.inflate(R.layout.list_layout,null,true);
 
         TextView name=(TextView) listviewitem.findViewById(R.id.name);
         TextView author=(TextView) listviewitem.findViewById(R.id.author);
         TextView count=(TextView) listviewitem.findViewById(R.id.count);
         TextView price=listviewitem.findViewById(R.id.price);
+
         Button button=listviewitem.findViewById(R.id.addcart);
         //TextView count=(TextView) listviewitem.findViewById(R.id.count);
         Book book=booklist.get(position);
@@ -68,13 +70,15 @@ public class BookList extends ArrayAdapter<Book> {
                     int flag=0;
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        EditText qty=listviewitem.findViewById(R.id.qty);
+                        final int qc=Integer.parseInt(qty.getText().toString());
                         for(DataSnapshot booksnapshot:dataSnapshot.getChildren()){
                             Book cartbook=booksnapshot.getValue(Book.class);
                             if(cartbook.getName().equals(bookname)) {
                                 flag=1;
-                                if(cartbook.getCount()<bookcount)
+                                if(cartbook.getCount()+qc<=bookcount)
                                 {
-                                    Book new_book = new Book(bookid, bookname, authorname, genre, cartbook.getCount() + 1,cartbook.getPrice());
+                                    Book new_book = new Book(bookid, bookname, authorname, genre, cartbook.getCount() + qc,cartbook.getPrice());
                                     firebasecart.child(bookid).setValue(new_book);
                                 }
                                 else
@@ -88,8 +92,8 @@ public class BookList extends ArrayAdapter<Book> {
                         }
                         if(flag==0){
 
-                            int count = 1;
-                            Book new_book = new Book(bookid, bookname, authorname, genre, 1,bookprice);
+                            int count = qc;
+                            Book new_book = new Book(bookid, bookname, authorname, genre,qc,bookprice);
                             assert bookid != null;
                             firebasecart.child(bookid).setValue(new_book);
                         }
