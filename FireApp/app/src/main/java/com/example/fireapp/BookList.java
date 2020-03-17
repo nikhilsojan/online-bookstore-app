@@ -79,7 +79,7 @@ public class BookList extends ArrayAdapter<Book> {
                         final int qc=Integer.parseInt(qty.getText().toString());
                         for(DataSnapshot booksnapshot:dataSnapshot.getChildren()){
                             Book cartbook=booksnapshot.getValue(Book.class);
-                            if(cartbook.getName().equals(bookname)) {
+                            if(cartbook.getId().equals(bookid)) {
                                 flag=1;
                                 if(cartbook.getCount()+qc<=bookcount)
                                 {
