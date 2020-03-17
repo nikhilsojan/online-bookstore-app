@@ -52,7 +52,12 @@ public class CartActivity extends AppCompatActivity {
         btnbuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CartActivity.this,CheckoutActivity.class));
+              if(books.isEmpty()){
+                Toast.makeText(CartActivity.this,"No books in the cart",Toast.LENGTH_SHORT);
+              }
+              else {
+                startActivity(new Intent(CartActivity.this, CheckoutActivity.class));
+              }
             }
         });
     }
