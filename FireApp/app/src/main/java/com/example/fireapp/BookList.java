@@ -79,7 +79,7 @@ public class BookList extends ArrayAdapter<Book> {
                         final int qc=Integer.parseInt(qty.getText().toString());
                         for(DataSnapshot booksnapshot:dataSnapshot.getChildren()){
                             Book cartbook=booksnapshot.getValue(Book.class);
-                            if(cartbook.getName().equals(bookname)) {
+                            if(cartbook.getId().equals(bookid)) {
                                 flag=1;
                                 if(cartbook.getCount()+qc<=bookcount)
                                 {
@@ -100,9 +100,16 @@ public class BookList extends ArrayAdapter<Book> {
                         if(flag==0){
 
                             int count = qc;
-                            Book new_book = new Book(bookid, bookname, authorname, genre,qc,bookprice);
-                            assert bookid != null;
-                            firebasecart.child(bookid).setValue(new_book);
+                            if(qc<=bookcount)
+                            {
+                                Book new_book = new Book(bookid, bookname, authorname, genre,qc,bookprice);
+                                assert bookid != null;
+                                firebasecart.child(bookid).setValue(new_book);
+                            }
+                            else{
+                                Toast.makeText(getContext(), "Quantity exceeds stock", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     }
 
