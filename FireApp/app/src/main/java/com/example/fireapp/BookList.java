@@ -85,6 +85,8 @@ public class BookList extends ArrayAdapter<Book> {
                                 {
                                     Book new_book = new Book(bookid, bookname, authorname, genre, cartbook.getCount() + qc,cartbook.getPrice());
                                     firebasecart.child(bookid).setValue(new_book);
+                                  Toast.makeText(getContext(), "Added to cart", Toast.LENGTH_SHORT).show();
+
                                 }
                                 else
                                 {

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,7 @@ public class CartActivity extends AppCompatActivity {
     Button btnlogout,btnbuy;
     FirebaseAuth firebaseauth;
     ListView listviewbooks;
+    TextView amount;
     DatabaseReference databasecarts;
     List<Book> books;
     @Override
@@ -61,14 +63,19 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 books.clear();
+              amount = findViewById(R.id.amount);
+              int total = 0;
                 if(dataSnapshot.exists()) {
                     for (DataSnapshot booksnapshot : dataSnapshot.getChildren()) {
                         Book book = booksnapshot.getValue(Book.class);
                         books.add(book);
+                        total = total + Integer.parseInt(book.getPrice())*book.getCount();
                     }
                 }
                 Cartlist adapter=new Cartlist(CartActivity.this,books);
                 listviewbooks.setAdapter(adapter);
+
+                amount.setText(Integer.toString(total));
             }
 
             @Override

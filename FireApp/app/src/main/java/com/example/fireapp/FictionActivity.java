@@ -65,8 +65,9 @@ public class FictionActivity extends AppCompatActivity {
                 for(DataSnapshot booksnapshot:dataSnapshot.getChildren())
                 {
                     Book book=booksnapshot.getValue(Book.class);
-                    if(book.getGenre().equals("Fiction"))
-                    books.add(book);
+                    if(book.getGenre().equals("Fiction")) {
+                      books.add(book);
+                    }
                 }
                 BookList adapter=new BookList(FictionActivity.this,books);
                 listviewbooks.setAdapter(adapter);
