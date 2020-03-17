@@ -26,5 +26,17 @@ public class AdminPanel extends AppCompatActivity {
 
       }
     });
+    delBook.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(AdminPanel.this, DeletebooksActivity.class));
+      }
+    });
+    update.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(AdminPanel.this, UpdatebooksActivity.class));
+      }
+    });
   }
 }
