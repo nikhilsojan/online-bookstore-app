@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -66,6 +67,11 @@ public class Cartlist extends ArrayAdapter<Book> {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         EditText qty=listviewitem.findViewById(R.id.qty);
+                        if(qty.getText().toString().equals(""))
+                        {
+                            Toast.makeText(getContext(),"quantity can't be empty",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         final int qc=Integer.parseInt(qty.getText().toString());
 
                         for(DataSnapshot booksnapshot:dataSnapshot.getChildren()){
