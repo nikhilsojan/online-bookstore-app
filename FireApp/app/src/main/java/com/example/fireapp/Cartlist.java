@@ -46,6 +46,11 @@ public class Cartlist extends ArrayAdapter<Book> {
         //TextView count=(TextView) listviewitem.findViewById(R.id.count);
 
         Book book=booklist.get(position);
+        FirebaseAuth firebaseauth= FirebaseAuth.getInstance();
+        FirebaseUser curruser=firebaseauth.getCurrentUser();
+        String uid=curruser.getUid();
+        final DatabaseReference firebasecart= FirebaseDatabase.getInstance().getReference("carts").child(uid);
+
         final String bookid=book.getId();
         final String bookname=book.getName();
         final String authorname=book.getAuthor();
@@ -58,10 +63,7 @@ public class Cartlist extends ArrayAdapter<Book> {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth firebaseauth= FirebaseAuth.getInstance();
-                FirebaseUser curruser=firebaseauth.getCurrentUser();
-                String uid=curruser.getUid();
-                final DatabaseReference firebasecart= FirebaseDatabase.getInstance().getReference("carts").child(uid);
+
                 firebasecart.addListenerForSingleValueEvent(new ValueEventListener() {
                     int flag=0;
                     @Override
@@ -75,7 +77,8 @@ public class Cartlist extends ArrayAdapter<Book> {
                         final int qc=Integer.parseInt(qty.getText().toString());
 
                         for(DataSnapshot booksnapshot:dataSnapshot.getChildren()){
-                            Book cartbook=booksnapshot.getValue(Book.class);
+                            final Book cartbook=booksnapshot.getValue(Book.class);
+
                             if(cartbook.getName().equals(bookname)) {
                                 flag=1;
                                 if(cartbook.getCount()-qc>0)

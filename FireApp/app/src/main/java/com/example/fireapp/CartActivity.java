@@ -64,6 +64,48 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        databasecarts.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot booksnapshot:dataSnapshot.getChildren())
+                {
+                    final Book book=booksnapshot.getValue(Book.class);
+                    final DatabaseReference databasebooks=FirebaseDatabase.getInstance().getReference("books");
+
+                    databasebooks.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            int flag=0;
+                            for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                                Book newbook=snapshot.getValue(Book.class);
+                                if(newbook.getId().equals(book.getId()))
+                                {
+                                    flag=1;
+                                    if(book.getCount()>newbook.getCount())
+                                    {
+                                        databasecarts.child(book.getId()).removeValue();
+                                    }
+                                }
+                            }
+                            if(flag==0)
+                            {
+                                databasecarts.child(book.getId()).removeValue();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         databasecarts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -72,7 +114,7 @@ public class CartActivity extends AppCompatActivity {
               int total = 0;
                 if(dataSnapshot.exists()) {
                     for (DataSnapshot booksnapshot : dataSnapshot.getChildren()) {
-                        Book book = booksnapshot.getValue(Book.class);
+                        final Book book = booksnapshot.getValue(Book.class);
                         books.add(book);
                         total = total + Integer.parseInt(book.getPrice())*book.getCount();
                     }
