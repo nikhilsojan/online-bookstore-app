@@ -98,9 +98,16 @@ public class BookList extends ArrayAdapter<Book> {
                         if(flag==0){
 
                             int count = qc;
-                            Book new_book = new Book(bookid, bookname, authorname, genre,qc,bookprice);
-                            assert bookid != null;
-                            firebasecart.child(bookid).setValue(new_book);
+                            if(qc<=bookcount)
+                            {
+                                Book new_book = new Book(bookid, bookname, authorname, genre,qc,bookprice);
+                                assert bookid != null;
+                                firebasecart.child(bookid).setValue(new_book);
+                            }
+                            else{
+                                Toast.makeText(getContext(), "Quantity exceeds stock", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     }
 
