@@ -28,6 +28,7 @@ public class AddbooksActivity extends AppCompatActivity {
     Button add;
     DatabaseReference databasebooks;
     FirebaseAuth firebaseauth;
+    TextView btnlogout;
     int flag;
     String bookname;
     String authorname;
@@ -46,6 +47,14 @@ public class AddbooksActivity extends AppCompatActivity {
         author=findViewById(R.id.authorname);
         add=findViewById(R.id.addbook);
         stock = findViewById(R.id.stock);
+      btnlogout=findViewById(R.id.logout);
+      btnlogout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          Toast.makeText(AddbooksActivity.this,"logged out",Toast.LENGTH_SHORT);
+          startActivity(new Intent(AddbooksActivity.this,MainActivity.class));
+        }
+      });
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

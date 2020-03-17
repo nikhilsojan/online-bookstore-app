@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class AdminPanel extends AppCompatActivity {
 
   Button addBook,delBook,update;
+  TextView btnlogout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,16 @@ public class AdminPanel extends AppCompatActivity {
     addBook = findViewById(R.id.addBook);
     delBook = findViewById(R.id.delBook);
     update = findViewById(R.id.update);
+
+    btnlogout=findViewById(R.id.logout);
+    btnlogout.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Toast.makeText(AdminPanel.this,"logged out",Toast.LENGTH_SHORT);
+        startActivity(new Intent(AdminPanel.this,MainActivity.class));
+      }
+    });
+
 
     addBook.setOnClickListener(new View.OnClickListener() {
       @Override
