@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this, "You are already logged in", Toast.LENGTH_SHORT);
+                    Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT);
                 }
             }
         };

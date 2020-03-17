@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AddbooksActivity extends AppCompatActivity {
     Spinner genrelist;
-    EditText book,author,price;
+    EditText book,author,price,stock;
     Button add;
     DatabaseReference databasebooks;
     FirebaseAuth firebaseauth;
@@ -33,6 +33,7 @@ public class AddbooksActivity extends AppCompatActivity {
     String authorname;
     String genre;
     String bookprice;
+    String bookstock;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ public class AddbooksActivity extends AppCompatActivity {
         book=findViewById(R.id.bookname);
         author=findViewById(R.id.authorname);
         add=findViewById(R.id.addbook);
+        stock = findViewById(R.id.stock);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +53,7 @@ public class AddbooksActivity extends AppCompatActivity {
                 authorname = author.getText().toString();
                 bookprice=price.getText().toString();
                 genre = genrelist.getSelectedItem().toString();
+                bookstock = stock.getText().toString();
                 if (bookname.isEmpty()) {
                     Toast.makeText(AddbooksActivity.this, "Enter bookname", Toast.LENGTH_SHORT).show();
                 }
@@ -59,7 +62,10 @@ public class AddbooksActivity extends AppCompatActivity {
                 }
                 if (genre.isEmpty()) {
                     Toast.makeText(AddbooksActivity.this, "Enter authorname", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+              if (bookstock.isEmpty()) {
+                Toast.makeText(AddbooksActivity.this, "Enter stock", Toast.LENGTH_SHORT).show();
+              } else {
                     flag=0;
                     databasebooks.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -68,7 +74,8 @@ public class AddbooksActivity extends AppCompatActivity {
                                 Book book=booksnapshot.getValue(Book.class);
                                 if(book.getName().equals(bookname)) {
                                     flag=1;
-                                    Book new_book = new Book(book.getId(), bookname, authorname, genre, book.getCount() + 1,bookprice);
+                                  int stockvalue =Integer.parseInt(bookstock);
+                                  Book new_book = new Book(book.getId(), bookname, authorname, genre, book.getCount() + stockvalue,bookprice);
                                     databasebooks.child(book.getId()).setValue(new_book);
                                     Toast.makeText(AddbooksActivity.this, "count updated", Toast.LENGTH_SHORT);
                                     break;
@@ -76,8 +83,9 @@ public class AddbooksActivity extends AppCompatActivity {
                             }
                             if(flag==0){
                                 String id = databasebooks.push().getKey();
-                                int count = 1;
-                                Book book = new Book(id, bookname, authorname, genre, 1,bookprice);
+                                int stockvalue = Integer.parseInt(bookstock) ;
+
+                                Book book = new Book(id, bookname, authorname, genre, stockvalue,bookprice);
                                 bookname="";
                                 assert id != null;
                                 databasebooks.child(id).setValue(book).addOnCompleteListener(AddbooksActivity.this, new OnCompleteListener<Void>() {
