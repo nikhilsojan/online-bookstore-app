@@ -60,7 +60,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="135dp"
         android:layout_marginBottom="243dp"
-        android:text="not registerd?sign up here"
+        android:text="Not registerd? Sign up here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
