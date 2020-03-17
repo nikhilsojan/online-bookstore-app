@@ -55,5 +55,14 @@
     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget"
     app:layout_constraintStart_toEndOf="@+id/count"
     app:layout_constraintTop_toTopOf="parent" />
+  <EditText
+    android:id="@+id/qty"
+    android:layout_width="63dp"
+    android:layout_height="44dp"
+    android:layout_marginTop="76dp"
+    android:ems="10"
+    android:inputType="number"
+    app:layout_constraintStart_toEndOf="@+id/price"
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

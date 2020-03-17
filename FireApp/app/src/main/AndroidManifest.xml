@@ -9,6 +9,8 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".UpdatebooksActivity"></activity>
+    <activity android:name=".DeletebooksActivity" />
     <activity android:name=".AdminPanel" />
     <activity android:name=".AdminLogin" />
     <activity android:name=".OrderActivity" />
