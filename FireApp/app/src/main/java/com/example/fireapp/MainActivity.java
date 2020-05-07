@@ -13,9 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -59,14 +63,21 @@ public class MainActivity extends AppCompatActivity {
                     firebaseauth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(!task.isSuccessful()){
-                                Toast.makeText(MainActivity.this,"Signup unsuccessful",Toast.LENGTH_SHORT).show();
-                            }
-                            else{
+                            if(task.isSuccessful()){
                                 String id=firebaseauth.getCurrentUser().getUid();
                                 User user=new User(id,email,pwd,aname,anumber);
                                 databaseusers.child(id).setValue(user);
                                 startActivity(new Intent(MainActivity.this,HomeActivity.class));
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            if (e instanceof FirebaseAuthWeakPasswordException) {
+                                Toast.makeText(MainActivity.this, "password must be atleast 8 chars", Toast.LENGTH_SHORT).show();
+                            }
+                            if (e instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(MainActivity.this, "Email id exists.please sign in", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
