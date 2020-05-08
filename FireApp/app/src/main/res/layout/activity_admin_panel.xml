@@ -7,50 +7,58 @@
   tools:context=".AdminPanel">
 
   <Button
-    android:id="@+id/addBook"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="155dp"
-    android:layout_marginTop="189dp"
-    android:layout_marginEnd="155dp"
-    android:layout_marginBottom="494dp"
-    android:text="Add Books"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/addBook"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="155dp"
+      android:layout_marginTop="189dp"
+      android:layout_marginEnd="155dp"
+      android:layout_marginBottom="37dp"
+      android:text="Add Books"
+      app:layout_constraintBottom_toTopOf="@+id/delBook"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
   <Button
-    android:id="@+id/delBook"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="144dp"
-    android:layout_marginTop="274dp"
-    android:layout_marginEnd="145dp"
-    android:text="Delete Books"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/delBook"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="144dp"
+      android:layout_marginTop="37dp"
+      android:layout_marginEnd="145dp"
+      android:layout_marginBottom="43dp"
+      android:text="Delete Books"
+      app:layout_constraintBottom_toTopOf="@+id/update"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/addBook" />
 
   <Button
-    android:id="@+id/update"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="144dp"
-    android:layout_marginTop="365dp"
-    android:layout_marginEnd="139dp"
-    android:text="Update Prices"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/update"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="144dp"
+      android:layout_marginTop="31dp"
+      android:layout_marginEnd="139dp"
+      android:layout_marginBottom="318dp"
+      android:text="Update Prices"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/delBook" />
 
   <TextView
-    android:id="@+id/logout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="325dp"
-    android:layout_marginTop="686dp"
-    android:text="Sign Out"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/logout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="325dp"
+      android:layout_marginTop="686dp"
+      android:layout_marginEnd="33dp"
+      android:layout_marginBottom="26dp"
+      android:text="Sign Out"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
