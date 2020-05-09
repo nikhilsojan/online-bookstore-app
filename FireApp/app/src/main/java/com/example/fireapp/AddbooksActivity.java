@@ -72,6 +72,9 @@ public class AddbooksActivity extends AppCompatActivity {
                 if (genre.isEmpty()) {
                     Toast.makeText(AddbooksActivity.this, "Enter authorname", Toast.LENGTH_SHORT).show();
                 }
+                if (bookprice.isEmpty()) {
+                    Toast.makeText(AddbooksActivity.this, "Enter price", Toast.LENGTH_SHORT).show();
+                }
               if (bookstock.isEmpty()) {
                 Toast.makeText(AddbooksActivity.this, "Enter stock", Toast.LENGTH_SHORT).show();
               } else {
