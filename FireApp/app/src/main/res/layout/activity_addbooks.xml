@@ -10,107 +10,96 @@
       android:id="@+id/bookname"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="83dp"
-      android:layout_marginTop="208dp"
-      android:layout_marginEnd="115dp"
-      android:layout_marginBottom="10dp"
+      android:layout_marginTop="10dp"
       android:ems="10"
       android:hint="BookName"
       android:inputType="textPersonName"
-      app:layout_constraintBottom_toTopOf="@+id/authorname"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.26" />
 
   <EditText
       android:id="@+id/authorname"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="83dp"
-      android:layout_marginTop="5dp"
-      android:layout_marginEnd="115dp"
-      android:layout_marginBottom="10dp"
+      android:layout_marginTop="10dp"
       android:ems="10"
       android:hint="AuthorName"
       android:inputType="textPersonName"
-      app:layout_constraintBottom_toTopOf="@+id/genre"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.505"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/bookname" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.621" />
 
   <Spinner
       android:id="@+id/genre"
       android:layout_width="214dp"
       android:layout_height="47dp"
-      android:layout_marginStart="83dp"
-      android:layout_marginTop="5dp"
-      android:layout_marginEnd="115dp"
-      android:layout_marginBottom="10dp"
       android:entries="@array/genres"
-      app:layout_constraintBottom_toTopOf="@+id/price"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="0.502"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/authorname" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.539" />
 
   <Button
       android:id="@+id/addbook"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="148dp"
-      android:layout_marginTop="11dp"
-      android:layout_marginEnd="175dp"
-      android:layout_marginBottom="178dp"
+      android:layout_marginTop="10dp"
       android:text="Add"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/stock" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.717" />
 
   <EditText
       android:id="@+id/price"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="83dp"
-      android:layout_marginTop="5dp"
-      android:layout_marginEnd="115dp"
-      android:layout_marginBottom="10dp"
+      android:layout_marginTop="10dp"
       android:ems="10"
-      android:hint="Price"
+      android:hint="price"
       android:inputType="number"
-      app:layout_constraintBottom_toTopOf="@+id/stock"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.505"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/genre" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.347" />
 
   <EditText
       android:id="@+id/stock"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="83dp"
-      android:layout_marginTop="5dp"
-      android:layout_marginEnd="115dp"
-      android:layout_marginBottom="10dp"
+      android:layout_marginTop="10dp"
       android:ems="10"
       android:hint="Stock"
       android:inputType="number"
-      app:layout_constraintBottom_toTopOf="@+id/addbook"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintHorizontal_bias="0.505"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/price" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.434" />
 
   <TextView
       android:id="@+id/logout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="325dp"
-      android:layout_marginTop="686dp"
-      android:layout_marginEnd="33dp"
-      android:layout_marginBottom="26dp"
+      android:layout_marginBottom="20dp"
       android:text="Sign Out"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.955"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.977" />
 </androidx.constraintlayout.widget.ConstraintLayout>
